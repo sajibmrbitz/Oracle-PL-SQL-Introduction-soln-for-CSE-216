@@ -46,10 +46,10 @@ d. Write an SQL query to retrieve all city names. Remove duplicate outputs.<br>
 SELECT DISTINCT CITY 
 FROM LOCATIONS;
 ```
-e. Write an SQL query to retrieve LOCATION_ID, ADDRESS from LOCATIONS table. 
-The ADDRESS should print each location in the following format: STREET_ADDRESS, CITY,STATE_PROVINCE, POSTAL_CODE<br>
+e. Write an SQL query to retrieve LOCATION_ID, ADDRESS from LOCATIONS table.                                                                                       
+**The ADDRESS should print each location in the following format: STREET_ADDRESS, CITY,STATE_PROVINCE, POSTAL_CODE**<br>
 ```sql
-SELECT LOCATION_ID, STREET_ADDRESS || ', ' || CITY || ', ' || STATE_PROVINCE || ', ' || POSTAL_CODE AS ADDRESS
+SELECT LOCATION_ID, (STREET_ADDRESS || ', ' || CITY || ', ' || STATE_PROVINCE || ', ' || POSTAL_CODE) AS ADDRESS
 FROM LOCATIONS;
 ```
 
@@ -132,7 +132,7 @@ FROM EMPLOYEES
 WHERE JOB_ID = 'AD_PRES'
 ORDER BY COMMISSION_PCT ASC, SALARY DESC;
 ```
-b. Retrieve all country names in lexicographical ascending order.<br>
+b. Retrieve all country names in **lexicographical ascending order**.<br>
 ```sql
 SELECT COUNTRY_NAME
 FROM COUNTRIES
