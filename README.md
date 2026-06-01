@@ -1,5 +1,11 @@
 ## Solution Manual for 'Oracle-PL-SQL-A Brief Introduction'
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Database-Oracle-0A192F?style=for-the-badge&logo=oracle&logoColor=00E5FF" alt="Oracle" />
+  <img src="https://img.shields.io/badge/Language-PL%2FSQL-00E5FF?style=for-the-badge&logo=codeigniter&logoColor=0A192F" alt="PL/SQL" />
+  <img src="https://img.shields.io/badge/Status-Finished-0A192F?style=for-the-badge&logo=github&logoColor=00E5FF" alt="Status" />
+</p>
+
 # Introduction
 
 First of all, my earnest tribute to the author of the book, **Prof. Sukarna Barua Sir** for such an amazing documentation with abundant exercises and practice problems.
