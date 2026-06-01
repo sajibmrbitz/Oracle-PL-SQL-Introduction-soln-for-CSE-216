@@ -25,14 +25,6 @@ These are my solutions to the exercise problems provided in the aforementioned b
 
 # Practice 2.1
 
->a. Write an SQL query to retrieve all country names.<br>
->b. Write an SQL query to retrieve all job titles.<br>
->c. Write an SQL query to retrieve all MANAGER_IDs.<br>
->d. Write an SQL query to retrieve all city names. Remove duplicate outputs.<br>
->e. Write an SQL query to retrieve LOCATION_ID, ADDRESS from LOCATIONS table.<br> 
->   The ADDRESS should print each location in the following format: STREET_ADDRESS, CITY,<br>
->   STATE_PROVINCE, POSTAL_CODE<br>
-
 a. Write an SQL query to retrieve all country names.<br>
 ```sql
 SELECT DISTINCT COUNTRY_NAME
@@ -63,21 +55,9 @@ FROM LOCATIONS;
 
 # Practice 2.2
 
-> a. Select names of all employees who have joined before January 01, 1998.<br>
-> b. Select all locations in the following countries: Canada, Germany, United Kingdom.<br>
-> c. Select first names of all employees who do not get any commission.<br>
-> d. Select first names of employees whose last name starts with an 'a'.<br>
-> e. Select first names of employees whose last name starts with an 's' and ends with an 'n'.<br>
-> f. Select all department names whose MANAGER_ID is 100.<br>
-> g. Select all names of employees whose job type is 'AD_PRES' and whose salary is at least 23000.<br>
-> h. Select names of all employees whose last name do not contain the character 's'.<br>
-> i. Select names and COMMISSION_PCT of all employees whose commission is at most 0.30.<br>
-> j. Select names of all employees who have joined after January 01, 1998.<br>
-> k. Select names of all employees who have joined in the year 1998.<br>
-
 a. Select names of all employees who have joined before January 01, 1998.<br>
 ```sql
-SELECT (FIRST_NAME || ' ' || LAST_NAME) NAME, TO_CHAR(HIRE_DATE,'DD-MON-YYYY') HIRE_DATE
+SELECT (FIRST_NAME || ' ' || LAST_NAME) AS NAME, TO_CHAR(HIRE_DATE,'DD-MMM-YYYY') HIRE_DATE
 FROM EMPLOYEES
 WHERE HIRE_DATE < '01-JAN-2007';
 ```
@@ -97,13 +77,13 @@ d. Select first names of employees whose last name starts with an 'a'.<br>
 ```sql
 SELECT FIRST_NAME 
 FROM EMPLOYEES 
-WHERE LOWER(LAST_NAME) LIKE 'a%';
+WHERE LOWER(LAST_NAME) LIKE 'a%';		--to make case insensitive
 ```
-e. Select first names of employees whose last name starts with an 's' and ends with an 'n'.<br>
+e. Select first names of employees whose **last name starts with an 's' and ends with an 'n'**.<br>
 ```sql
 SELECT FIRST_NAME
 FROM EMPLOYEES 
-WHERE LOWER(LAST_NAME) LIKE 's%n';
+WHERE LOWER(LAST_NAME) LIKE 's%n';		--to make case insensitive
 ```
 f. Select all department names whose MANAGER_ID is 100.<br>
 ```sql
@@ -113,15 +93,15 @@ WHERE MANAGER_ID = 100;
 ```
 g. Select all names of employees whose job type is 'AD_PRES' and whose salary is at least 23000.<br>
 ```sql
-SELECT (FIRST_NAME || ' ' || LAST_NAME) NAME
+SELECT (FIRST_NAME || ' ' || LAST_NAME) AS NAME
 FROM EMPLOYEES 
 WHERE JOB_ID = 'AD_PRES' AND SALARY >= 23000;
 ```
-h. Select names of all employees whose last name do not contain the character 's'.<br>
+h. Select names of all employees whose **last name do not contain the character 's'**.<br>
 ```sql
-SELECT (FIRST_NAME || ' ' || LAST_NAME) NAME
+SELECT (FIRST_NAME || ' ' || LAST_NAME) AS NAME
 FROM EMPLOYEES 
-WHERE LOWER(LAST_NAME) NOT LIKE '%s%';
+WHERE LOWER(LAST_NAME) NOT LIKE '%s%';		--case insensitive
 ```
 i. Select names and COMMISSION_PCT of all employees whose commission is at most 0.30.<br>
 ```sql
@@ -135,7 +115,7 @@ SELECT FIRST_NAME, LAST_NAME
 FROM EMPLOYEES 
 WHERE HIRE_DATE > '01-JAN-1998';
 ```
-k. Select names of all employees who have joined in the year 1998.<br>
+k. Select names of all employees **who have joined in the year 1998**.<br>
 ```sql
 SELECT FIRST_NAME, LAST_NAME, HIRE_DATE 
 FROM EMPLOYEES 
@@ -143,9 +123,6 @@ WHERE TO_CHAR(HIRE_DATE, 'YYYY') = '1998';
 ```
 
 # Practice 2.3
-> a. Select names, salary, and commissions of all employees of job type 'AD_PRES'. Sort the
->    result in ascending order of commission and then descending order of salary.<br>
-> b. Retrieve all country names in lexicographical ascending order.<br>
 
 a. Select names, salary, and commissions of all employees of job type 'AD_PRES'. Sort the
 result in ascending order of commission and then descending order of salary.<br>
