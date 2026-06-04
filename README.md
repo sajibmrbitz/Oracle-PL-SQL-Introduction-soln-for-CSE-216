@@ -219,7 +219,7 @@ FROM EMPLOYEES
 > a. Print hire dates of all employees in the following formats: <br>
 (i) 13th February, 1998 (ii) 13 February, 1998.<br>
 
-a.(i) 13th February, 1998
+a.(i) **13th February, 1998**
 ```sql
 SELECT FIRST_NAME, LAST_NAME, TO_CHAR(HIRE_DATE,'ddth Month, YYYY')
 FROM EMPLOYEES;
