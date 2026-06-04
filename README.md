@@ -192,7 +192,7 @@ SELECT FIRST_NAME, ROUND((TO_DATE(SYSDATE)-HIRE_DATE)/365,2)
 FROM EMPLOYEES
 ```
 **b**. Suppose you need to find the **number of days each employee worked during the first month 
-of his joining**. Write an SQL query to find this information for all employees.<br>
+of his joining**. Write an SQL query to find this information for all employees.<br> --try on your own first
 ```sql
 SELECT FIRST_NAME, LAST_NAME, HIRE_DATE, ADD_MONTHS(TRUNC(HIRE_DATE, 'MONTH'),1) - HIRE_DATE AS "FIRST MONTH WORKED"
 FROM EMPLOYEES
