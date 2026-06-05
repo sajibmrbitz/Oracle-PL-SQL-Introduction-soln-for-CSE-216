@@ -275,10 +275,10 @@ HAVING AVG(SALARY) <= 50000 AND DEPARTMENT_ID IS NOT NULL
 
 # Practice 4.3
 
-a. Find number of employees in each salary group. Salary groups are considered as follows. 
-Group 1: 0k to <5K, Group 2: 5k to <10k, Group 3: 10k to <15k, and so on.<br>
+a. **Find number of employees in each salary group. Salary groups are considered as follows. 
+Group 1: 0k to <5K, Group 2: 5k to <10k, Group 3: 10k to <15k, and so on**.<br>
 ```sql
-SELECT TRUNC(SALARY/5000,0) + 1 SALARY_GROUP, COUNT(*)
+SELECT (TRUNC(SALARY/5000,0) + 1) AS SALARY_GROUP, COUNT(*)
 FROM EMPLOYEES
 GROUP BY TRUNC(SALARY/5000,0)
 ORDER BY SALARY_GROUP;
@@ -289,7 +289,7 @@ and total employees hired.<br>
 SELECT TO_CHAR(HIRE_DATE, 'YYYY') AS YEAR, JOB_ID, COUNT(*)
 FROM EMPLOYEES
 GROUP BY TO_CHAR(HIRE_DATE, 'YYYY'), JOB_ID
-ORDER BY YEAR, JOB_ID;
+ORDER BY YEAR, JOB_ID;				--default ASC
 ```
 ># CONCEPT
 >### SQL Logical Order of Execution
