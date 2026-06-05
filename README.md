@@ -264,9 +264,6 @@ ORDER BY AVG_SALARY DESC, MAX_SALARY DESC, MIN_SALARY DESC;
 
 # Practice 4.2
 
-> a. Find for each department, the average salary of the department. Print only those 
-DEPARTMENT_ID and average salary whose average salary is at most 50k.<br>
-
 a. Find for each department, the average salary of the department. Print only those 
 DEPARTMENT_ID and average salary whose average salary is at most 50k.<br>
 ```sql
@@ -277,11 +274,6 @@ HAVING AVG(SALARY) <= 50000 AND DEPARTMENT_ID IS NOT NULL
 ```
 
 # Practice 4.3
-
-> a. Find number of employees in each salary group. Salary groups are considered as follows. 
-Group 1: 0k to <5K, Group 2: 5k to <10k, Group 3: 10k to <15k, and so on.<br>
-> b. Find the number of employees that were hired in each year in each job type. Print year, job id, 
-and total employees hired.<br>
 
 a. Find number of employees in each salary group. Salary groups are considered as follows. 
 Group 1: 0k to <5K, Group 2: 5k to <10k, Group 3: 10k to <15k, and so on.<br>
@@ -294,11 +286,20 @@ ORDER BY SALARY_GROUP;
 b. Find the number of employees that were hired in each year in each job type. Print year, job id, 
 and total employees hired.<br>
 ```sql
-SELECT TO_CHAR(HIRE_DATE, 'YYYY') YEAR, JOB_ID, COUNT(*)
+SELECT TO_CHAR(HIRE_DATE, 'YYYY') AS YEAR, JOB_ID, COUNT(*)
 FROM EMPLOYEES
 GROUP BY TO_CHAR(HIRE_DATE, 'YYYY'), JOB_ID
 ORDER BY YEAR, JOB_ID;
 ```
+># CONCEPT
+>### SQL Logical Order of Execution
+
+>1. **`FROM`**
+>2. **`WHERE`**
+>3. **`GROUP BY`**
+>4. **`HAVING`**
+>5. **`SELECT`**
+>6. **`ORDER BY`**
 
 # Chapter 5
 
