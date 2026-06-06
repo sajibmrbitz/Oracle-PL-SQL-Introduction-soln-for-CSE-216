@@ -6,21 +6,21 @@
   <img src="https://img.shields.io/badge/Status-Finished-0A192F?style=for-the-badge&logo=github&logoColor=00E5FF" alt="Status" />
 </p>
 
-# Introduction
+># Introduction
 
 First of all, my earnest tribute to the author of the book, **Prof. Sukarna Barua Sir** for such an amazing documentation with abundant exercises and practice problems.
 
 These are my solutions to the exercise problems provided in the aforementioned book. Please do care to star the repository if you find it helpful.
 
-# Contents   
+># Contents   
 
-## [Chapter 1](#chapter-1-1)
-## [Chapter 2](#chapter-2-1)
-## [Chapter 3](#chapter-3-1)
-## [Chapter 4](#chapter-4-1)
-## [Chapter 5](#chapter-5-1)
-## [Chapter 6](#chapter-6-1)
-## [Chapter 7](#chapter-7-1)
+## [Chapter 01](#chapter-1-1)
+## [Chapter 02](#chapter-2-1)
+## [Chapter 03](#chapter-3-1)
+## [Chapter 04](#chapter-4-1)
+## [Chapter 05](#chapter-5-1)
+## [Chapter 06](#chapter-6-1)
+## [Chapter 07](#chapter-7-1)
 ## [Chapter 11](#chapter-11-1)
 
 # Chapter 1   
@@ -29,7 +29,7 @@ These are my solutions to the exercise problems provided in the aforementioned b
 
 # Chapter 2
 
-# Practice 2.1
+># Practice 2.1
 
 a. Write an SQL query to retrieve all country names.<br>
 ```sql
@@ -59,7 +59,7 @@ SELECT LOCATION_ID, (STREET_ADDRESS || ', ' || CITY || ', ' || STATE_PROVINCE ||
 FROM LOCATIONS;
 ```
 
-# Practice 2.2
+># Practice 2.2
 
 a. Select names of all employees who have joined before January 01, 1998.<br>
 ```sql
@@ -128,7 +128,7 @@ FROM EMPLOYEES
 WHERE TO_CHAR(HIRE_DATE, 'YYYY') = '1998';
 ```
 
-# Practice 2.3
+># Practice 2.3
 
 a. Select names, salary, and commissions of all employees of job type 'AD_PRES'. Sort the
 result in ascending order of commission and then descending order of salary.<br>
@@ -147,7 +147,7 @@ ORDER BY COUNTRY_NAME;
 
 # Chapter 3
 
-# Practice 3.1
+># Practice 3.1
 
 a. Print the first three characters and last three characters of all country names. Print in capital letters.<br>
 ```sql
@@ -168,7 +168,7 @@ FROM JOBS
 WHERE INSTR(UPPER(JOB_TITLE),'MANAGER') > 0
 ```
 
-# Practice 3.2
+># Practice 3.2
 
 a. Print employee last name and number of days employed. Print the second information 
 rounded up to 2 decimal places.<br>
@@ -183,7 +183,7 @@ SELECT LAST_NAME, TRUNC((TO_DATE(SYSDATE) - HIRE_DATE)/365,3) AS "YEARS EMPLOYED
 FROM EMPLOYEES
 ```
 
-# Practice 3.3
+># Practice 3.3
 
 a. For all employees, find the number of years employed. Print first names and number of years 
 employed for each employee.<br>
@@ -198,7 +198,7 @@ SELECT FIRST_NAME, LAST_NAME, HIRE_DATE, ADD_MONTHS(TRUNC(HIRE_DATE, 'MONTH'),1)
 FROM EMPLOYEES
 ```
 
-# Practice 3.4
+># Practice 3.4
 
 a. Print the commission_pct values of all employees whose commission is at least 20%. Use 
 NVL function.<br>
@@ -214,7 +214,7 @@ contain NULL values**.<br>
 SELECT LAST_NAME, NVL(SALARY,0)*66*(1+NVL(COMMISSION_PCT,0)) AS SAL
 FROM EMPLOYEES
 ```
-# Practice 3.5
+># Practice 3.5
 
 > a. Print hire dates of all employees in the following formats: <br>
 (i) 13th February, 1998 (ii) 13 February, 1998.<br>
@@ -232,7 +232,7 @@ FROM EMPLOYEES;
 ```
 # Chapter 4
 
-# Practice 4.1
+># Practice 4.1
 
 a. For all managers, find the number of employees he/she manages.
 Print the MANAGER_ID and total number of such employees.<br>
@@ -262,7 +262,7 @@ GROUP BY DEPARTMENT_ID
 ORDER BY AVG_SALARY DESC, MAX_SALARY DESC, MIN_SALARY DESC;
 ```
 
-# Practice 4.2
+># Practice 4.2
 
 a. Find for each department, the average salary of the department. Print only those 
 DEPARTMENT_ID and average salary whose average salary is at most 50k.<br>
@@ -273,7 +273,7 @@ GROUP BY DEPARTMENT_ID
 HAVING AVG(SALARY) <= 50000 AND DEPARTMENT_ID IS NOT NULL
 ```
 
-# Practice 4.3
+># Practice 4.3
 
 a. **Find number of employees in each salary group. Salary groups are considered as follows. 
 Group 1: 0k to <5K, Group 2: 5k to <10k, Group 3: 10k to <15k, and so on**.<br>
@@ -293,7 +293,7 @@ ORDER BY YEAR, JOB_ID;				--default ASC
 ```
 ># CONCEPT
 >### SQL Logical Order of Execution
-
+>
 >1. **`FROM`**
 >2. **`WHERE`**
 >3. **`GROUP BY`**
@@ -328,30 +328,31 @@ a. For each employee print last name, salary, and job title.<br>
 ```sql
 SELECT E.LAST_NAME, E.SALARY, J.JOB_TITLE
 FROM EMPLOYEES E JOIN JOBS J
-ON (E.JOB_ID = J.JOB_ID);
+ON (E.JOB_ID=J.JOB_ID);
 ```
-b. For each department, print department name and country name it is situated in.<br>
+b. **For each department, print department name and country name it is situated in**.<br>
 ```sql
 SELECT D.DEPARTMENT_NAME, C.COUNTRY_NAME
 FROM DEPARTMENTS D JOIN LOCATIONS L 
-ON (D.LOCATION_ID = L.LOCATION_ID)
+ON (D.LOCATION_ID=L.LOCATION_ID)
 JOIN COUNTRIES C
-ON (L.COUNTRY_ID = C.COUNTRY_ID);
+ON (L.COUNTRY_ID=C.COUNTRY_ID);
 ```
-c. For each country, finds total number of departments situated in the country.<br>
+c. For each country, find total number of departments situated in the country.<br>
 ```sql
 SELECT C.COUNTRY_NAME, COUNT(*)
 FROM DEPARTMENTS D JOIN LOCATIONS L
-ON (D.LOCATION_ID = L.LOCATION_ID)
+ON (D.LOCATION_ID=L.LOCATION_ID)
 JOIN COUNTRIES C
-ON (L.COUNTRY_ID = C.COUNTRY_ID)
+ON (L.COUNTRY_ID=C.COUNTRY_ID)
 GROUP BY C.COUNTRY_ID, C.COUNTRY_NAME;
 ```
 d. For each employee, finds the number of job switches of the employee.<br>
 ```sql
 SELECT E.LAST_NAME, COUNT(J.JOB_ID) JOB_SWITCHES
-FROM EMPLOYEES E LEFT OUTER JOIN JOB_HISTORY J 
-ON (E.EMPLOYEE_ID = J.EMPLOYEE_ID)
+FROM EMPLOYEES E
+LEFT OUTER JOIN JOB_HISTORY J 
+ON (E.EMPLOYEE_ID=J.EMPLOYEE_ID)
 GROUP BY E.EMPLOYEE_ID, E.LAST_NAME;
 ```
 e. For each department and job types, find the total number of employees working. Print 
@@ -359,45 +360,46 @@ department names, job titles, and total employees working.<br>
 ```sql
 SELECT D.DEPARTMENT_NAME, J.JOB_TITLE, COUNT(*)
 FROM EMPLOYEES E JOIN DEPARTMENTS D
-ON (E.DEPARTMENT_ID = D.DEPARTMENT_ID)
+ON (E.DEPARTMENT_ID=D.DEPARTMENT_ID)
 JOIN JOBS J 
-ON (E.JOB_ID = J.JOB_ID)
+ON (E.JOB_ID=J.JOB_ID)
 GROUP BY D.DEPARTMENT_ID, J.JOB_ID, D.DEPARTMENT_NAME, J.JOB_TITLE;
 ```
-f. For each employee, finds the total number of employees those were hired before him/her. 
+f. For each employee, find the total number of employees those were hired before him/her. 
 Print employee last name and total employees.<br>
 ```sql
-SELECT E1.LAST_NAME, COUNT(E2.EMPLOYEE_ID) HIRED_BEFORE
+SELECT E1.LAST_NAME, COUNT(E2.EMPLOYEE_ID) AS HIRED_BEFORE
 FROM EMPLOYEES E1 LEFT OUTER JOIN EMPLOYEES E2 
-ON (E2.HIRE_DATE < E1.HIRE_DATE)
+ON (E2.HIRE_DATE<E1.HIRE_DATE)
 GROUP BY E1.EMPLOYEE_ID, E1.LAST_NAME;
 ```
-g. For each employee, finds the total number of employees those were hired before him/her and 
+g. For each employee, find the total number of employees those were hired before him/her and 
 those were hired after him/her. Print employee last name, total employees hired before him, 
 and total employees hired after him.<br>
 ```sql
 SELECT E1.LAST_NAME, COUNT(DISTINCT E2.EMPLOYEE_ID) HIRED_BEFORE, COUNT(DISTINCT E3.EMPLOYEE_ID) HIRED_AFTER
 FROM EMPLOYEES E1 LEFT OUTER JOIN EMPLOYEES E2
-ON (E2.HIRE_DATE < E1.HIRE_DATE)
+ON (E2.HIRE_DATE<E1.HIRE_DATE)
 LEFT OUTER JOIN EMPLOYEES E3
-ON (E3.HIRE_DATE > E1.HIRE_DATE)
+ON (E3.HIRE_DATE>E1.HIRE_DATE)
 GROUP BY E1.EMPLOYEE_ID, E1.LAST_NAME;
 ```
 h. Find the employees having salaries greater than at least three other employees.<br> 
 ```sql
 SELECT E1.LAST_NAME
 FROM EMPLOYEES E1, EMPLOYEES E2 
-WHERE E1.SALARY > E2.SALARY
+WHERE E1.SALARY>E2.SALARY
 GROUP BY E1.EMPLOYEE_ID, E1.LAST_NAME
-HAVING COUNT(E2.EMPLOYEE_ID) >= 3;
+HAVING COUNT(E2.EMPLOYEE_ID)>=3;
 ```
 i. For each employee, find his rank, i.e., position with respect to salary. The highest salaried 
 employee should get rank 1 and lowest salaried employee should get the last rank. Employees 
-with same salary should get same rank value. Print employee last names and his/he rank.<br>
+with same salary should get same rank value. Print employee last names and his/her rank.<br>
 ```sql
 SELECT E1.LAST_NAME, E1.SALARY, COUNT(DISTINCT E2.SALARY)+1 RANK 
-FROM EMPLOYEES E1 LEFT OUTER JOIN EMPLOYEES E2 
-ON (E1.SALARY < E2.SALARY)
+FROM EMPLOYEES E1
+LEFT OUTER JOIN EMPLOYEES E2 
+ON (E1.SALARY<E2.SALARY)
 GROUP BY E1.EMPLOYEE_ID, E1.LAST_NAME, E1.SALARY
 ORDER BY RANK;
 ```
@@ -406,10 +408,11 @@ The number of employees in your output should be more than three if there are em
 with same salary.<br>
 ```sql
 SELECT E1.LAST_NAME, E1.SALARY
-FROM EMPLOYEES E1 LEFT OUTER JOIN EMPLOYEES E2 
-ON (E1.SALARY < E2.SALARY)
+FROM EMPLOYEES E1
+LEFT OUTER JOIN EMPLOYEES E2 
+ON (E1.SALARY<E2.SALARY)
 GROUP BY E1.EMPLOYEE_ID, E1.LAST_NAME, E1.SALARY
-HAVING COUNT(DISTINCT E2.SALARY) <=2
+HAVING COUNT(DISTINCT E2.SALARY)<=2
 ORDER BY E1.SALARY DESC;
 ```
 
