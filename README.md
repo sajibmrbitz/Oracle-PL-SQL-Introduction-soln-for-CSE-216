@@ -305,25 +305,6 @@ ORDER BY YEAR, JOB_ID;				--default ASC
 
 # Practice 5.1
 
-> a. For each employee print last name, salary, and job title.<br>
-> b. For each department, print department name and country name it is situated in.<br>
-> c. For each country, finds total number of departments situated in the country.<br>
-> d. For each employee, finds the number of job switches of the employee.<br>
-> e. For each department and job types, find the total number of employees working. Print 
-department names, job titles, and total employees working.<br>
-> f. For each employee, finds the total number of employees those were hired before him/her. 
-Print employee last name and total employees.<br>
-> g. For each employee, finds the total number of employees those were hired before him/her and 
-those were hired after him/her. Print employee last name, total employees hired before him, 
-and total employees hired after him.<br>
-> h. Find the employees having salaries greater than at least three other employees.<br> 
-> i. For each employee, find his rank, i.e., position with respect to salary. The highest salaried 
-employee should get rank 1 and lowest salaried employee should get the last rank. Employees 
-with same salary should get same rank value. Print employee last names and his/he rank.<br>
-> j. Finds the names of employees and their salaries for the top three highest salaried employees. 
-The number of employees in your output should be more than three if there are employees 
-with same salary.<br>
-
 a. For each employee print last name, salary, and job title.<br>
 ```sql
 SELECT E.LAST_NAME, E.SALARY, J.JOB_TITLE
